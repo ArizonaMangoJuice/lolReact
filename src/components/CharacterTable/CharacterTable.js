@@ -2,8 +2,6 @@ import React from 'react';
 
 import CharacterCard from '../CharacterCard/CharacterCard';
 
-import ('./CharacterTable.css');
-
 export default function CharacterResult(props){
 
   const characters = props.characters.map(character => {
@@ -12,5 +10,9 @@ export default function CharacterResult(props){
     );
   });
   
-  return (<div className="cardContainer">{characters}</div>);
+  return (
+  <main>
+    <div className="cardContainer">{characters}</div>
+  </main>
+  );
 }

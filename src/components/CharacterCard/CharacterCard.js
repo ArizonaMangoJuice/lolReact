@@ -9,6 +9,7 @@ export default function(props){
         <div className="container">
           <h4>{props.character.name}</h4> 
           <p>{props.character.role}</p>
+          
         </div>
       </article>
   );

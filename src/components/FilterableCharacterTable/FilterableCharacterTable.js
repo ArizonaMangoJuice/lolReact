@@ -3,8 +3,8 @@ import React from 'react';
 import './filterablecharacter.css';
 
 
-import CharacterResult from '../CharacterResult/CharacterResult';
-import SeacrhForm from '../SearchForm/SearchForm';
+import CharacterTable from '../CharacterTable/CharacterTable';
+import SearchBar from '../SearchBar/SearchBar';
 
 export default class FilterableCharacterTable extends React.Component{
   constructor(props){
@@ -15,20 +15,19 @@ export default class FilterableCharacterTable extends React.Component{
     }
   }
 
-  setSearchTerm(value){
-    this.setState({searchTerm: value});
+  setSearchTerm(searchTerm){
+    this.setState({searchTerm});
   }
 
   render(){
-    const filteredCharacters = this.state.characters.filter(character => {
-      return character.name.toLowerCase()
-        .includes(this.state.searchTerm.toLowerCase());
-    });
+    const characters = this.state.characters.filter(character =>
+      character.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    );
 
     return (
       <div>
-        <SeacrhForm setSearchTerm = {(input) => this.setSearchTerm(input)}/>
-        <CharacterResult characters={filteredCharacters}/>
+        <SearchBar onChange = {searchTerm => this.setSearchTerm(searchTerm)}/>
+        <CharacterTable characters={characters}/>
       </div>
     );
   }
